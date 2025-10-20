@@ -179,11 +179,6 @@ curl -X POST http://localhost:3000/api/products \
 curl -H "x-api-key: abc123xyz789" "http://localhost:3000/api/products?page=1&limit=5"
 ```
 
-## 📝 Notes & suggestions
-
-- If you want pagination and route handlers to co-exist, modify the pagination middleware to call `next()` and attach results to `req.pagination` instead of sending the response directly.
-- Add input validation middleware (e.g., celebrate or express-validator) for stricter request validation before saving/updating.
-- For production, do not commit real `.env` credentials into source control. Use `.env.example` showing required variables.
 
 ## 📦 Project status
 

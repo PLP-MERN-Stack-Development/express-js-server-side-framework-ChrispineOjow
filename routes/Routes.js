@@ -3,6 +3,7 @@ import {Product} from '../Model/products.js';
 const router = express.Router();
 import apiKeyAuth from '../Middleware/Authenticator.js';
 import pagination from '../Middleware/pagination.js';
+import { validateCreateProduct, validateUpdateProduct } from '../Middleware/inputValidation.js';
 
 
 import 'dotenv/config';
@@ -77,7 +78,7 @@ router.get('/api/products/:id', async (req, res) => {
 })
 
 // Create products
-router.post('/api/products', async (req, res) => {
+router.post('/api/products', validateCreateProduct ,async (req, res) => {
 
     const {name, description, price, category, inStock} = req.body;
 
@@ -115,7 +116,7 @@ router.post('/api/products', async (req, res) => {
 });
 
 //Update an existing product
-router.put('/api/products/:id', async (req, res) => {
+router.put('/api/products/:id', validateUpdateProduct,async (req, res) => {
     
     const { id } = req.params;
 
